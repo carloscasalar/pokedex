@@ -12,5 +12,9 @@
       "../common/mixins",
       "./mixins"
     ]
+  },
+  "Tipo": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
