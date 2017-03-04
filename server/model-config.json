@@ -16,5 +16,9 @@
   "Tipo": {
     "dataSource": "mongo",
     "public": true
+  },
+  "Pokemon": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
