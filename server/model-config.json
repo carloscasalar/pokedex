@@ -14,7 +14,7 @@
     ]
   },
   "Tipo": {
-    "dataSource": "memoria",
+    "dataSource": "mongo",
     "public": true
   }
 }

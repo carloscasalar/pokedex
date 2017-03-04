@@ -4,5 +4,15 @@
     "localStorage": "pokedex",
     "file": "db/pokedex.data",
     "connector": "memory"
+  },
+  "mongo": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "mongodb://localhost:27017/pokedex",
+    "database": "pokedex",
+    "password": "",
+    "name": "mongo",
+    "user": "",
+    "connector": "mongodb"
   }
 }
