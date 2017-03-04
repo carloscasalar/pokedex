@@ -1,1 +1,8 @@
-{}
+{
+  "memoria": {
+    "name": "memoria",
+    "localStorage": "pokedex",
+    "file": "db/pokedex.data",
+    "connector": "memory"
+  }
+}
