@@ -15,6 +15,10 @@ module.exports = function(Pokemon) {
     message: 'El nombre debe ser una única palabra entre 4 y 24 caracteres.',
   });
 
+  Pokemon.validatesUniquenessOf('nombre', {
+    message: 'Este pokemon ya lo tienes.',
+  });
+
   Pokemon.validatesLengthOf('descripcion', {
     min: 30,
     message: {
