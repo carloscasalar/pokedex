@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check",
+    "generar-lb-services": "lb-ng server/server.js client/app/common/lb/lb-services.js"
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "eslint": "^2.13.1",
     "eslint-config-loopback": "^4.0.0",
+    "loopback-sdk-angular-cli": "^3.0.0",
     "nsp": "^2.1.0"
   },
   "repository": {
