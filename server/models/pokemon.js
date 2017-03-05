@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 module.exports = function(Pokemon) {
   Pokemon.validatesLengthOf('tipoIds', {
     min: 1,
@@ -10,7 +12,7 @@ module.exports = function(Pokemon) {
     }});
 
   Pokemon.validatesFormatOf('nombre', {
-    with: /^\w{4,24}$/,
+    with: /^[\wÀ-ú]{4,24}$/,
     allowNull: false,
     message: 'El nombre debe ser una única palabra entre 4 y 24 caracteres.',
   });
@@ -24,5 +26,37 @@ module.exports = function(Pokemon) {
     message: {
       min: 'La descripción debe ser de al menos 30 caracteres',
     }});
+
+  Pokemon.validateAsync(
+    'favorito',
+    verificarMaximoNumeroFavoritos,
+    {message: 'Puede haber como máximo 10 pokemons favoritos'});
+
+  function verificarMaximoNumeroFavoritos(err, done) {
+    var pokemon = this;
+
+    if (!pokemon.favorito) {
+      return done();
+    }
+
+    var where = {favorito: true};
+
+    if (!_.isNil(pokemon.id)) {
+      where.id = {neq: pokemon.id};
+    }
+
+    Pokemon.count(where)
+    .then(function(numeroFavoritos) {
+      if (numeroFavoritos > 9) {
+        err();
+      }
+      done();
+    }).catch(function(errorInesperado) {
+      console.error('Error inesperado verificando número de favoritos',
+        errorInesperado);
+      err();
+      done();
+    });
+  }
 };
 
