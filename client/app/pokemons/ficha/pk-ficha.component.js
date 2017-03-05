@@ -17,7 +17,6 @@
 
     function onInit(){
       if($ctrl.pokemonIn){
-        $log.debug('Pokemon recibido como parámetro: ', $ctrl.pokemonIn);
         $ctrl.pokemon = angular.extend({}, $ctrl.pokemonIn);
       }
     }

@@ -10,7 +10,7 @@
     <div class="col-10">
       <input class="form-control" type="text" id="nombre"
              name="nombre" ng-model="$ctrl.pokemon.nombre"
-             maxlength="24" minlength="4" required ng-disabled="$ctrl.soloLectura">
+             maxlength="24" minlength="4" required ng-disabled="::$ctrl.soloLectura">
     </div>
   </div>
 
@@ -19,7 +19,7 @@
     <div class="col-10">
       <input class="form-control" type="text" id="descripcion"
              name="descripcion" ng-model="$ctrl.pokemon.descripcion"
-             minlength="30" required ng-disabled="$ctrl.soloLectura">
+             minlength="30" required ng-disabled="::$ctrl.soloLectura">
     </div>
   </div>
 
@@ -28,16 +28,16 @@
     <div class="col-10">
       <input class="form-control" type="checkbox" id="favorito"
              name="favorito" ng-model="$ctrl.pokemon.favorito"
-             ng-disabled="$ctrl.soloLectura">
+             ng-disabled="::$ctrl.soloLectura">
     </div>
   </div>
 
   <div class="form-group row">
     <label for="tipos" class="col-2 col-form-label">Tipos de pokemon:</label>
     <div class="col-10" ng-if="::$ctrl.soloLectura">
-      <span class="badge separa-badges" ng-repeat="tipo in $ctrl.pokemon.tipos" ng-bind="tipo.nombre"></span>
+      <pk-tipo-badges tipos="$ctrl.pokemon.tipos"> </pk-tipo-badges>
     </div>
-    <div class="col-10" ng-if="!::$ctrl.soloLectura">
+    <div class="col-10" ng-if="::!$ctrl.soloLectura">
       <select chosen
           data-placeholder-text-single="'Elige uno o dos tipos'"
           data-max-selected-options
@@ -53,19 +53,19 @@
 
   <div class="row">
     <div class="col-12 pull-right">
-        <button type="button" class="btn btn-success btn-sm" ng-show="$ctrl.soloLectura">
+        <button type="button" class="btn btn-success btn-sm" ng-show="::$ctrl.soloLectura">
           <span class="glyphicon glyphicon-pencil"></span> Editar
         </button>
-        <button type="button" class="btn btn-danger btn-sm" ng-show="!$ctrl.soloLectura && $ctrl.pokemonIn">
+        <button type="button" class="btn btn-danger btn-sm" ng-show="::!$ctrl.soloLectura && $ctrl.pokemonIn">
           <span class="glyphicon glyphicon-trash"></span> Borrar
         </button>
-        <button type="button" class="btn btn-success btn-sm" ng-show="!$ctrl.soloLectura">
+        <button type="button" class="btn btn-success btn-sm" ng-show="::!$ctrl.soloLectura">
           <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
         </button>
-        <button type="button" class="btn btn-warning btn-sm" ng-show="!$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::!$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
           <span class="glyphicon glyphicon-arrow-left"></span> Cancelar
         </button>
-        <button type="button" class="btn btn-warning btn-sm" ng-show="$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
           <span class="glyphicon glyphicon-arrow-left"></span> Volver al listado
         </button>
     </div>

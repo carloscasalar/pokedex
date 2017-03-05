@@ -40,7 +40,7 @@
         <td ng-bind="row.nombre"></td>
         <td><span class="glyphicon" ng-class="{'glyphicon-star': row.favorito, 'glyphicon-star-empty': !row.favorito}"></span></td>
         <td ng-bind="row.descripcion"></td>
-        <td><span class="badge separa-badges" ng-repeat="tipo in row.tipos" ng-bind="tipo.nombre"></span></td>
+        <td><pk-tipo-badges tipos="row.tipos"> </pk-tipo-badges></td>
         <td>
           <button type="button" class="btn btn-default btn-sm" ui-sref="ficha({pokemonId: row.id})">
             <span class="glyphicon glyphicon-list-alt"></span> Ver ficha

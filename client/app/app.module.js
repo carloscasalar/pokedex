@@ -4,7 +4,8 @@
   angular.module('app', [
     'ui.router',
     'common',
-    'pokemons'
+    'pokemons',
+    'tipos'
   ]);
 
 })(angular);
