@@ -31,7 +31,6 @@
     "tipos": {
       "type": "referencesMany",
       "model": "Tipo",
-      "foreignKey": "",
       "options": {
         "validate": true
       }
