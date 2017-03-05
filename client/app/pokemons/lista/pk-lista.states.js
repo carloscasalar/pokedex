@@ -4,7 +4,7 @@
 
   function estadosPkLista($stateProvider){
     $stateProvider.state('lista', {
-      url:'/lista',
+      url:'/pokemons',
       template: '<pk-lista pokemons="$resolve.pokelista"></pk-lista>',
       resolve: {
         pokelista: ['$log','Pokemon', function($log, Pokemon){

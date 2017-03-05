@@ -19,3 +19,11 @@ h1 {
 .st-sort-descent:before{
   content: '\25BC';
 }
+
+.ng-touched.ng-valid {
+	border: 2px green solid;
+
+}
+.ng-touched.ng-invalid {
+	border: 2px red solid;
+}

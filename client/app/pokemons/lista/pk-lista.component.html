@@ -42,12 +42,8 @@
         <td ng-bind="row.descripcion"></td>
         <td><span class="badge separa-badges" ng-repeat="tipo in row.tipos" ng-bind="tipo.nombre"></span></td>
         <td>
-          <button type="button" class="btn btn-default btn-sm">
+          <button type="button" class="btn btn-default btn-sm" ui-sref="ficha({pokemonId: row.id})">
             <span class="glyphicon glyphicon-list-alt"></span> Ver ficha
-          </button>
-
-          <button type="button" class="btn btn-danger btn-sm">
-            <span class="glyphicon glyphicon-trash"></span> Borrar
           </button>
         </td>
       </tr>

@@ -4,6 +4,6 @@
   app.config(['$urlRouterProvider', estados]);
 
   function estados($urlRouterProvider){
-    $urlRouterProvider.otherwise('/lista');
+    $urlRouterProvider.otherwise('/pokemons');
   }
 })(angular.module('app'));
