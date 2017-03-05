@@ -29,6 +29,7 @@
     "bootstrap": "^3.3.7",
     "angular-smart-table": "^2.1.8",
     "angular-bootstrap": "^2.5.0",
-    "PACE": "pace#^1.0.2"
+    "PACE": "pace#^1.0.2",
+    "angular-resource": "^1.6.2"
   }
 }
