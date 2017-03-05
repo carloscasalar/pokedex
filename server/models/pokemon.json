@@ -1,0 +1,41 @@
+{
+  "name": "Pokemon",
+  "description": "Contiene los detalles de los pokemons del pokédex",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nombre": {
+      "type": "string",
+      "required": true,
+      "default": "descripcion"
+    },
+    "descripcion": {
+      "type": "string",
+      "required": true
+    },
+    "favorito": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "evolucion": {
+      "type": "hasOne",
+      "model": "Pokemon",
+      "foreignKey": ""
+    },
+    "tipos": {
+      "type": "referencesMany",
+      "model": "Tipo",
+      "options": {
+        "validate": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
