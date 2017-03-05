@@ -1,5 +1,58 @@
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <h1>Lista de Pokemons</h1>
+  </div>
+
+  <div class="col-md-4 ">
+    <button type="button" class="btn btn-success btn-sm pull-right">
+          <span class="glyphicon glyphicon-plus"></span> Nuevo
+     </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <table st-table="$ctrl.pokemons" class="table table-striped">
+      <thead>
+      <tr>
+        <th st-sort="nombre">Nombre</th>
+        <th st-sort="favorito">Favorito</th>
+        <th>Descripción</th>
+        <th>Tipos</th>
+        <th>Acciones</th>
+
+      </tr>
+      <tr>
+        <th>
+          <input st-search="nombre" placeholder="Búsqueda por nombre" class="input-sm form-control" type="search"/>
+        </th>
+        <th >
+          <select st-search="favorito" class="input-sm form-control">
+            <option value="">Ver todos</option>
+            <option value="true">Sí</option>
+            <option value="false">No</option>
+          </select>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in $ctrl.pokemons">
+        <td ng-bind="row.nombre"></td>
+        <td><span class="glyphicon" ng-class="{'glyphicon-star': row.favorito, 'glyphicon-star-empty': !row.favorito}"></span></td>
+        <td ng-bind="row.descripcion"></td>
+        <td><span class="badge separa-badges" ng-repeat="tipo in row.tipos" ng-bind="tipo.nombre"></span></td>
+        <td>
+          <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-list-alt"></span> Ver ficha
+          </button>
+
+          <button type="button" class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-trash"></span> Borrar
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>

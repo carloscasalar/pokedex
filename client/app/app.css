@@ -3,3 +3,19 @@ body {
     padding-bottom: 30px;
 }
 
+h1 {
+  padding: 0;
+  margin: 0px 0 35px 0;
+}
+
+.separa-badges {
+  margin-right: 3px;
+}
+
+.st-sort-ascent:before{
+  content: '\25B2';
+}
+
+.st-sort-descent:before{
+  content: '\25BC';
+}

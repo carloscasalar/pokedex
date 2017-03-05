@@ -2,7 +2,9 @@
   'use strict';
 
   angular.module('pokemons.pk-lista', [
-    'ui.router'
+    'ui.router',
+    'smart-table',
+    'common'
   ]);
 
 })(angular);
