@@ -10,7 +10,13 @@
     <div class="col-10">
       <input class="form-control" type="text" id="nombre"
              name="nombre" ng-model="$ctrl.pokemon.nombre"
-             maxlength="24" minlength="4" required ng-disabled="::$ctrl.soloLectura">
+             ng-pattern="/^[\wÀ-ú]{4,24}$/" required ng-disabled="::$ctrl.soloLectura">
+      <div ng-if="pokeForm.nombre.$touched && pokeForm.nombre.$error.required" class="error-messages text-danger small">
+        Es obligatorio indicar el nombre.
+      </div>
+      <div ng-if="pokeForm.nombre.$touched && pokeForm.nombre.$error.pattern" class="error-messages text-danger small">
+        El nombre debe ser una palabra de entre 4 y 24 caracteres.
+      </div>
     </div>
   </div>
 
@@ -20,6 +26,12 @@
       <input class="form-control" type="text" id="descripcion"
              name="descripcion" ng-model="$ctrl.pokemon.descripcion"
              minlength="30" required ng-disabled="::$ctrl.soloLectura">
+      <div ng-if="pokeForm.descripcion.$touched && pokeForm.descripcion.$error.required" class="error-messages text-danger small">
+        Es obligatorio indicar la descripción.
+      </div>
+      <div ng-if="pokeForm.descripcion.$touched && pokeForm.descripcion.$error.minlength" class="error-messages text-danger small">
+        El descripción debe ser de al menos 30 caracteres.
+      </div>
     </div>
   </div>
 
@@ -38,13 +50,14 @@
       <pk-tipo-badges tipos="$ctrl.pokemon.tipos"> </pk-tipo-badges>
     </div>
     <div class="col-10" ng-if="::!$ctrl.soloLectura">
-      <select chosen
+      <select chosen multiple
           data-placeholder-text-single="'Elige uno o dos tipos'"
-          data-max-selected-options
-          ng-model="$ctrl.pokemon.tipos"
-          ng-options="tipo.id for tipo in $ctrl.tipos"
+          data-max-selected-options="2"
+          ng-model="$ctrl.pokemon.tipoIds"
+          ng-options="tipo.id as tipo.nombre for tipo in $ctrl.tipos"
           id="tipos"
           name="tipos"
+          style="width:50%"
           >
         <option value=""></option>
       </select>
@@ -53,19 +66,23 @@
 
   <div class="row">
     <div class="col-12 pull-right">
-        <button type="button" class="btn btn-success btn-sm" ng-show="::$ctrl.soloLectura">
+        <button type="button" class="btn btn-success btn-sm" ng-show="::$ctrl.modoVer" ui-sref="ficha-editar({pokemonId: $ctrl.pokemon.id})">
           <span class="glyphicon glyphicon-pencil"></span> Editar
         </button>
-        <button type="button" class="btn btn-danger btn-sm" ng-show="::!$ctrl.soloLectura && $ctrl.pokemonIn">
+        <!--<button type="button" class="btn btn-danger btn-sm" ng-show="::$ctrl.modoEditar">
           <span class="glyphicon glyphicon-trash"></span> Borrar
-        </button>
-        <button type="button" class="btn btn-success btn-sm" ng-show="::!$ctrl.soloLectura">
+        </button>-->
+        <button type="button" class="btn btn-success btn-sm" ng-show="::$ctrl.modoEditar || $ctrl.modoCrear"
+                ng-click="$ctrl.guardar()" ng-disabled="pokeForm.$pristine || pokeForm.$invalid">
           <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
         </button>
-        <button type="button" class="btn btn-warning btn-sm" ng-show="::!$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoEditar" ui-sref="ficha-editar({pokemonId: $ctrl.pokemon.id})">
           <span class="glyphicon glyphicon-arrow-left"></span> Cancelar
         </button>
-        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.soloLectura && $ctrl.pokemonIn" ui-sref="lista">
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoCrear" ui-sref="lista">
+          <span class="glyphicon glyphicon-arrow-left"></span> Cancelar
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoVer" ui-sref="lista">
           <span class="glyphicon glyphicon-arrow-left"></span> Volver al listado
         </button>
     </div>

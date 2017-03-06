@@ -6,7 +6,8 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
-    "generar-lb-services": "lb-ng server/server.js client/app/common/lb/lb-services.js"
+    "generar-lb-services": "lb-ng server/server.js client/app/common/lb/lb-services.js",
+    "postinstall": "bower install"
   },
   "dependencies": {
     "compression": "^1.0.3",

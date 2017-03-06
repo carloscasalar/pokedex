@@ -3,8 +3,9 @@
 
   angular.module('pokemons.pk-ficha', [
     'ui.router',
-    'common',
-    'localytics.directives'
+    'localytics.directives',
+    'ngToast',
+    'common'
   ]);
 
 })(angular);

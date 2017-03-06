@@ -10,7 +10,8 @@
         pokelista: ['$log','Pokemon', function($log, Pokemon){
           return Pokemon.find({
                       filter: {
-                        include: 'tipos'
+                        include: ['tipos','evolucion'],
+                        order: 'nombre ASC'
                       }
                     })
                     .$promise
