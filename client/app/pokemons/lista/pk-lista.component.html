@@ -39,7 +39,12 @@
       <tbody>
       <tr ng-repeat="row in $ctrl.pokemons">
         <td ng-bind="row.nombre"></td>
-        <td><span class="glyphicon" ng-class="{'glyphicon-star': row.favorito, 'glyphicon-star-empty': !row.favorito}"></span></td>
+        <td><span class="glyphicon clickable"
+                  ng-class="{'glyphicon-star': row.favorito, 'glyphicon-star-empty': !row.favorito}"
+                  ng-click="$ctrl.togleFavorito(row)"
+                  >
+            </span>
+       </td>
         <td ng-bind="row.descripcion"></td>
         <td><pk-tipo-badges tipos="row.tipos"> </pk-tipo-badges></td>
         <td ng-bind="row.evolucion.nombre"></td>

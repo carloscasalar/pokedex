@@ -8,6 +8,10 @@ h1 {
   margin: 0px 0 35px 0;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .separa-badges {
   margin-right: 3px;
 }

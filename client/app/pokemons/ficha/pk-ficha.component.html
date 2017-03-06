@@ -71,7 +71,7 @@
     <div class="col-10" ng-if="::!$ctrl.soloLectura">
       <select chosen
           data-placeholder-text-single="'Opcionalmente elige una evolución'"
-          data-max-selected-options="2"
+          data-allow-single-deselect="true"
           ng-model="$ctrl.pokemon.evolucionaAId"
           ng-options="evolucion.id as evolucion.nombre for evolucion in $ctrl.evoluciones"
           id="evoluciones"
