@@ -17,6 +17,7 @@
 .vscode
 typings
 coverage
+client/lib
 node_modules
 npm-debug.log
 notas.txt
