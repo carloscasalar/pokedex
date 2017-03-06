@@ -4,7 +4,8 @@
     bindings:{
       soloLectura: '<',
       pokemonIn: '<pokemon',
-      tipos: '<'
+      tipos: '<',
+      evoluciones: '<?'
     },
     templateUrl: 'app/pokemons/ficha/pk-ficha.component.html',
     controller: ['$log','$state','ngToast','Pokemon', FichaController]
@@ -31,28 +32,25 @@
     }
 
     function guardar(){
-      Pokemon.patchOrCreate({},{
+      $log.debug('Pokemon a guardar: ', $ctrl.pokemon);
+
+      var pokemonGuardar = {
         id: $ctrl.pokemon.id,
         nombre: $ctrl.pokemon.nombre,
         descripcion: $ctrl.pokemon.descripcion,
         favorito: $ctrl.pokemon.favorito,
         tipoIds: $ctrl.pokemon.tipoIds,
-        evolucion: $ctrl.pokemon.evolucion
-      })
+        evolucionaAId: $ctrl.pokemon.evolucionaAId
+      };
+
+      Pokemon.patchOrCreate({},pokemonGuardar)
       .$promise
       .then(function(){
-        ngToast.create({
-          content: 'Pokemon guardado correctamente',
-          dismissButton: true
-        });
+        ngToast.success('Pokemon guardado correctamente');
         $state.go('lista');
       })
       .catch(function(err){
-        ngToast.create({
-          className: 'danger',
-          content: 'No fue posible guardar el pokemon',
-          dismissButton: true
-        });
+        ngToast.danger('No fue posible guardar el pokemon');
 
         $log.error('Error guardando pokemon', err);
       });

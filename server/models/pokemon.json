@@ -24,9 +24,9 @@
   "validations": [],
   "relations": {
     "evolucion": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Pokemon",
-      "foreignKey": ""
+      "foreignKey": "evolucionaAId"
     },
     "tipos": {
       "type": "referencesMany",

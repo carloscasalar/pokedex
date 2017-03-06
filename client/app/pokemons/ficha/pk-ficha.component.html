@@ -51,13 +51,32 @@
     </div>
     <div class="col-10" ng-if="::!$ctrl.soloLectura">
       <select chosen multiple
-          data-placeholder-text-single="'Elige uno o dos tipos'"
+          data-placeholder-text-multiple="'Elige uno o dos tipos'"
           data-max-selected-options="2"
           ng-model="$ctrl.pokemon.tipoIds"
           ng-options="tipo.id as tipo.nombre for tipo in $ctrl.tipos"
           id="tipos"
           name="tipos"
           style="width:50%"
+          >
+        <option value=""></option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="evolucion" class="col-2 col-form-label">Este pokemon evoluciona a:</label>
+    <div class="col-10" ng-if="::$ctrl.soloLectura" ng-bind="$ctrl.pokemon.evolucion.nombre || 'Evolución no definida'">
+    </div>
+    <div class="col-10" ng-if="::!$ctrl.soloLectura">
+      <select chosen
+          data-placeholder-text-single="'Opcionalmente elige una evolución'"
+          data-max-selected-options="2"
+          ng-model="$ctrl.pokemon.evolucionaAId"
+          ng-options="evolucion.id as evolucion.nombre for evolucion in $ctrl.evoluciones"
+          id="evoluciones"
+          name="evoluciones"
+          style="width:90%"
           >
         <option value=""></option>
       </select>
@@ -76,7 +95,7 @@
                 ng-click="$ctrl.guardar()" ng-disabled="pokeForm.$pristine || pokeForm.$invalid">
           <span class="glyphicon glyphicon-floppy-disk"></span> Guardar
         </button>
-        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoEditar" ui-sref="ficha-editar({pokemonId: $ctrl.pokemon.id})">
+        <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoEditar" ui-sref="ficha({pokemonId: $ctrl.pokemon.id})">
           <span class="glyphicon glyphicon-arrow-left"></span> Cancelar
         </button>
         <button type="button" class="btn btn-warning btn-sm" ng-show="::$ctrl.modoCrear" ui-sref="lista">
